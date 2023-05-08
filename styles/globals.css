@@ -9,3 +9,13 @@
     @apply p-0 m-0;
   }
 }
+
+@layer components {
+  .padding-wide {
+    @apply px-10;
+  }
+
+  .text-hover {
+    @apply opacity-75 hover:opacity-100 transition;
+  }
+}

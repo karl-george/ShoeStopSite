@@ -1,3 +1,4 @@
+import Header from '@/components/Header';
 import { fetchBrands } from '@/utils/fetchBrands';
 import { GetServerSideProps } from 'next';
 import Image from 'next/image';
@@ -8,12 +9,14 @@ interface Props {
 
 export default function Home({ brands }: Props) {
   return (
-    <main>
-      Test
-      {brands.map((brand) => (
-        <p>{brand.title}</p>
-      ))}
-    </main>
+    <>
+      <Header />
+      <main>
+        {/* {brands.map((brand) => (
+          <p>{brand.title}</p>
+        ))} */}
+      </main>
+    </>
   );
 }
 
