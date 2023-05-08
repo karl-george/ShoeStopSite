@@ -1,49 +1,52 @@
-import Image from 'next/image';
 import Link from 'next/link';
-import logo from '../public/logo.png';
 import { MdOutlineShoppingBag, MdOutlineSearch } from 'react-icons/md';
-import { AiOutlineUser } from 'react-icons/ai';
+import { AiOutlineUser, AiOutlineClose } from 'react-icons/ai';
+import { GiHamburgerMenu } from 'react-icons/gi';
+import Image from 'next/image';
+import logo from '../public/logo.png';
+import { useState } from 'react';
 
 function Header() {
+  const [isNavToggled, setIsNavToggled] = useState(false);
+
   return (
     <header>
-      <div className='flex flex-row items-center justify-between w-full py-4 container'>
+      <div className='flex flex-row justify-between items-center py-6'>
         <Link href='/'>
-          <div className='w-40 h-50 cursor-pointer'>
+          <div className='relative w-40'>
             <Image src={logo} alt='ShoeStop Logo' className='object-contain' />
           </div>
         </Link>
-        <div className='items-center justify-center space-x-8 hidden md:flex'>
-          <Link href='/findstore' className='text-sm font-bold text-hover'>
-            Find a Store
-          </Link>
-          <Link href='/help' className='text-sm font-bold text-hover'>
-            Help
-          </Link>
-          <Link href='/signin' className='text-sm font-bold text-hover'>
-            Sign In
-          </Link>
-        </div>
-      </div>
-      <div className='grid grid-cols-3 p-4 container'>
-        <div></div>
-        <div className='flex justify-center items-center space-x-8 font-medium text-lg'>
+        <div className='hidden md:flex space-x-8 font-medium text-lg'>
+          <Link href='/'>Home</Link>
           <Link href='/men'>Men</Link>
           <Link href='/women'>Women</Link>
           <Link href='/kids'>Kids</Link>
         </div>
-        <div className='flex justify-end items-center space-x-8'>
+        <div className='flex space-x-6'>
           <Link href='/search'>
             <MdOutlineSearch size={25} />
           </Link>
           <Link href='/checkout'>
             <MdOutlineShoppingBag size={25} />
           </Link>
-          <Link href='/user'>
+          <Link href='/user' className='hidden md:block'>
             <AiOutlineUser size={25} />
           </Link>
+          <a
+            href='#'
+            className='md:hidden'
+            onClick={() => setIsNavToggled((prev) => !prev)}
+          >
+            {isNavToggled ? (
+              <AiOutlineClose size={25} />
+            ) : (
+              <GiHamburgerMenu size={25} />
+            )}
+          </a>
         </div>
       </div>
+      {isNavToggled ? <p>Open</p> : <p>Closed</p>}
     </header>
   );
 }
