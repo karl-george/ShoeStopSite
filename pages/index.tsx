@@ -1,14 +1,28 @@
+import { fetchBrands } from '@/utils/fetchBrands';
+import { GetServerSideProps } from 'next';
 import Image from 'next/image';
-import { Inter } from 'next/font/google';
 
-const inter = Inter({ subsets: ['latin'] });
+interface Props {
+  brands: Brand[];
+}
 
-export default function Home() {
+export default function Home({ brands }: Props) {
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
+    <main>
       Test
+      {brands.map((brand) => (
+        <p>{brand.title}</p>
+      ))}
     </main>
   );
 }
+
+export const getServerSideProps: GetServerSideProps<Props> = async () => {
+  const brands = await fetchBrands();
+
+  return {
+    props: {
+      brands,
+    },
+  };
+};
