@@ -11,8 +11,8 @@
 }
 
 @layer components {
-  .padding-wide {
-    @apply px-10;
+  .container {
+    @apply max-w-[1600px] px-4 mx-auto;
   }
 
   .text-hover {
