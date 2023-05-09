@@ -13,7 +13,7 @@ export default function Home({ brands }: Props) {
     <div className='container'>
       <Header />
       <div className='flex'>
-        <Sidebar />
+        <Sidebar brands={brands} />
         <main>
           {/* {brands.map((brand) => (
             <p>{brand.title}</p>

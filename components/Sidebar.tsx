@@ -1,21 +1,28 @@
-function Sidebar() {
+import Checkbox from './Checkbox';
+
+interface Props {
+  brands: Brand[];
+}
+
+function Sidebar({ brands }: Props) {
+  const brandList = brands.map((brand) => (
+    <Checkbox label={brand.title} key={brand._id + brand.title} />
+  ));
+
   return (
     <div className='px-6 py-4 space-y-8'>
       <div className='space-y-3'>
-        <h3 className='text-xl font-medium text-title'>Brand</h3>
-        <p>Nike</p>
-        <p>Adidias</p>
-        <p>Reebok</p>
-        <p>Vans</p>
+        <h3 className='text-title'>Brand</h3>
+        {brandList}
       </div>
       <div>
-        <h3>Price</h3>
+        <h3 className='text-title'>Gender</h3>
       </div>
       <div>
-        <h3>Color</h3>
+        <h3 className='text-title'>Price</h3>
       </div>
       <div>
-        <h3>Gender</h3>
+        <h3 className='text-title'>Color</h3>
       </div>
     </div>
   );
