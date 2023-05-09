@@ -22,7 +22,7 @@ function Header() {
           className={
             isNavToggled
               ? 'fixed flex flex-col top-14 right-1 w-[200px] py-8 px-6 space-y-6 font-medium text-lg transition border-l-2'
-              : 'hidden space-x-8 text-lg font-medium md:flex'
+              : 'hidden space-x-8 md:flex'
           }
         >
           <Link href='/' className='text-hover text-title'>

@@ -16,7 +16,7 @@
   }
 
   .text-title {
-    @apply text-[#767F92];
+    @apply text-[#767F92] text-xl font-medium ;
   }
 
   .text-hover {
