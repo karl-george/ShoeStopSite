@@ -15,6 +15,10 @@
     @apply max-w-[1920px] px-4 mx-auto;
   }
 
+  .text-title {
+    @apply text-[#767F92];
+  }
+
   .text-hover {
     @apply hover:text-[#4B91F1];
   }

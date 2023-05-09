@@ -25,16 +25,16 @@ function Header() {
               : 'hidden space-x-8 text-lg font-medium md:flex'
           }
         >
-          <Link href='/' className='text-hover'>
+          <Link href='/' className='text-hover text-title'>
             Home
           </Link>
-          <Link href='/men' className='text-hover'>
+          <Link href='/men' className='text-hover text-title'>
             Men
           </Link>
-          <Link href='/women' className='text-hover'>
+          <Link href='/women' className='text-hover text-title'>
             Women
           </Link>
-          <Link href='/kids' className='text-hover'>
+          <Link href='/kids' className='text-hover text-title'>
             Kids
           </Link>
           <div className='w-full pt-6 text-center md:hidden'>
@@ -43,17 +43,17 @@ function Header() {
         </div>
         <div className='flex space-x-6'>
           <Link href='/search'>
-            <MdOutlineSearch size={25} className='text-hover' />
+            <MdOutlineSearch size={25} className='text-hover text-title' />
           </Link>
           <Link href='/checkout'>
-            <MdOutlineShoppingBag size={25} className='text-hover' />
+            <MdOutlineShoppingBag size={25} className='text-hover text-title' />
           </Link>
           <Link href='/user' className='hidden md:block'>
-            <AiOutlineUser size={25} className='text-hover' />
+            <AiOutlineUser size={25} className='text-hover text-title' />
           </Link>
           <a
             href='#'
-            className='md:hidden'
+            className='md:hidden text-title'
             onClick={() => setIsNavToggled((prev) => !prev)}
           >
             {isNavToggled ? (
