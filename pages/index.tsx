@@ -12,12 +12,14 @@ export default function Home({ brands }: Props) {
   return (
     <div className='container'>
       <Header />
-      <Sidebar />
-      <main>
-        {/* {brands.map((brand) => (
-          <p>{brand.title}</p>
-        ))} */}
-      </main>
+      <div className='flex'>
+        <Sidebar />
+        <main>
+          {/* {brands.map((brand) => (
+            <p>{brand.title}</p>
+          ))} */}
+        </main>
+      </div>
     </div>
   );
 }
