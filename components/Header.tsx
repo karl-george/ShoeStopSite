@@ -1,10 +1,10 @@
+import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { MdOutlineShoppingBag, MdOutlineSearch } from 'react-icons/md';
 import { AiOutlineUser, AiOutlineClose } from 'react-icons/ai';
 import { GiHamburgerMenu } from 'react-icons/gi';
-import Image from 'next/image';
 import logo from '../public/logo.png';
-import { useState } from 'react';
 import Button from './Button';
 
 function Header() {
