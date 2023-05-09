@@ -14,8 +14,8 @@ function Button({ title, onClick, width, loading, padding, filled }: IProps) {
         width ? width : 'w-auto'
       } ${padding} cursor-pointer items-center justify-center overflow-hidden rounded font-medium  focus:outline-none ${
         filled
-          ? 'bg-[#4B91F1] text-white hover:bg-[#2d6cc2]'
-          : 'text-[#4B91F1] border border-[#4B91F1] hover:bg-[#4B91F1] hover:text-white'
+          ? 'bg-blue-accent text-white hover:bg-[#2d6cc2]'
+          : 'text-blue-accent border border-blue-accent hover:bg-blue-accent hover:text-white'
       }`}
       onClick={onClick}
     >

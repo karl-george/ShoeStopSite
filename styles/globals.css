@@ -16,10 +16,10 @@
   }
 
   .text-title {
-    @apply text-[#767F92] text-xl font-medium ;
+    @apply text-[#767F92] text-xl font-medium;
   }
 
   .text-hover {
-    @apply hover:text-[#4B91F1];
+    @apply hover:text-blue-accent;
   }
 }
