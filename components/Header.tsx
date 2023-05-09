@@ -12,7 +12,7 @@ function Header() {
 
   return (
     <header>
-      <div className='flex flex-row items-center justify-between py-6'>
+      <nav className='flex flex-row items-center justify-between py-6'>
         <Link href='/'>
           <div className='relative w-40'>
             <Image src={logo} alt='ShoeStop Logo' className='object-contain' />
@@ -63,7 +63,7 @@ function Header() {
             )}
           </a>
         </div>
-      </div>
+      </nav>
     </header>
   );
 }
