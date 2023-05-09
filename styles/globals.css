@@ -16,6 +16,6 @@
   }
 
   .text-hover {
-    @apply opacity-75 hover:opacity-100 transition;
+    @apply hover:text-[#4B91F1];
   }
 }

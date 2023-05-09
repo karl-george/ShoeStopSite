@@ -5,33 +5,51 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import Image from 'next/image';
 import logo from '../public/logo.png';
 import { useState } from 'react';
+import Button from './Button';
 
 function Header() {
   const [isNavToggled, setIsNavToggled] = useState(false);
 
   return (
     <header>
-      <div className='flex flex-row justify-between items-center py-6'>
+      <div className='flex flex-row items-center justify-between py-6'>
         <Link href='/'>
           <div className='relative w-40'>
             <Image src={logo} alt='ShoeStop Logo' className='object-contain' />
           </div>
         </Link>
-        <div className='hidden md:flex space-x-8 font-medium text-lg'>
-          <Link href='/'>Home</Link>
-          <Link href='/men'>Men</Link>
-          <Link href='/women'>Women</Link>
-          <Link href='/kids'>Kids</Link>
+        <div
+          className={
+            isNavToggled
+              ? 'fixed flex flex-col top-14 right-1 w-[200px] py-8 px-6 space-y-6 font-medium text-lg transition border-l-2'
+              : 'hidden space-x-8 text-lg font-medium md:flex'
+          }
+        >
+          <Link href='/' className='text-hover'>
+            Home
+          </Link>
+          <Link href='/men' className='text-hover'>
+            Men
+          </Link>
+          <Link href='/women' className='text-hover'>
+            Women
+          </Link>
+          <Link href='/kids' className='text-hover'>
+            Kids
+          </Link>
+          <div className='w-full pt-6 text-center md:hidden'>
+            <Button title='Sign In' padding='py-2 px-6' filled />
+          </div>
         </div>
         <div className='flex space-x-6'>
           <Link href='/search'>
-            <MdOutlineSearch size={25} />
+            <MdOutlineSearch size={25} className='text-hover' />
           </Link>
           <Link href='/checkout'>
-            <MdOutlineShoppingBag size={25} />
+            <MdOutlineShoppingBag size={25} className='text-hover' />
           </Link>
           <Link href='/user' className='hidden md:block'>
-            <AiOutlineUser size={25} />
+            <AiOutlineUser size={25} className='text-hover' />
           </Link>
           <a
             href='#'
@@ -46,7 +64,6 @@ function Header() {
           </a>
         </div>
       </div>
-      {isNavToggled ? <p>Open</p> : <p>Closed</p>}
     </header>
   );
 }
