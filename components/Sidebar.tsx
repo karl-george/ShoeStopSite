@@ -3,9 +3,10 @@ import Checkbox from './Checkbox';
 
 interface Props {
   brands: Brand[];
+  products: Product[];
 }
 
-function Sidebar({ brands }: Props) {
+function Sidebar({ brands, products }: Props) {
   const brandList = brands.map((brand) => (
     <Checkbox label={brand.title} key={brand._id + brand.title} />
   ));
@@ -17,6 +18,18 @@ function Sidebar({ brands }: Props) {
   const priceList = prices.map((price, idx) => (
     <Checkbox label={price.price} key={price.price + idx} />
   ));
+
+  /** Retrieve colours, remove duplicates, sort and map through them and pass to Checkbox component **/
+  const colours = products.map((product) => {
+    return product.colour;
+  });
+
+  const colourList = colours
+    .filter((item, index) => {
+      return colours.indexOf(item) === index;
+    })
+    .sort()
+    .map((colour, idx) => <Checkbox label={colour} key={colour + idx} />);
 
   return (
     <div className='px-6 py-4 divide-y'>
@@ -34,6 +47,7 @@ function Sidebar({ brands }: Props) {
       </div>
       <div className='space-y-3 py-4'>
         <h3 className='text-title'>Color</h3>
+        {colourList}
       </div>
     </div>
   );
