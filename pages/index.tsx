@@ -1,9 +1,9 @@
 import Header from '@/components/Header';
 import Sidebar from '@/components/Sidebar';
+import Products from '@/components/Products';
 import { fetchBrands } from '@/utils/fetchBrands';
 import { fetchProducts } from '@/utils/fetchProducts';
 import { GetServerSideProps } from 'next';
-import Image from 'next/image';
 
 interface Props {
   brands: Brand[];
@@ -14,12 +14,10 @@ export default function Home({ brands, products }: Props) {
   return (
     <div className='container'>
       <Header />
-      <div className='flex'>
+      <div className='flex py-4'>
         <Sidebar brands={brands} products={products} />
-        <main>
-          {/* {brands.map((brand) => (
-            <p>{brand.title}</p>
-          ))} */}
+        <main className='w-full'>
+          <Products products={products} />
         </main>
       </div>
     </div>
