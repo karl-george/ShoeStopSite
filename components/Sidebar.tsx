@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { BiChevronDown, BiChevronUp } from 'react-icons/bi';
 import { genders, prices } from '@/constants';
 import Checkbox from './Checkbox';
 
@@ -7,6 +9,9 @@ interface Props {
 }
 
 function Sidebar({ brands, products }: Props) {
+  const [categoryShowMore, setCategoryShowMore] = useState(false);
+  const [colourShowMore, setColourShowMore] = useState(false);
+
   const brandList = brands.map((brand) => (
     <Checkbox label={brand.title} key={brand._id + brand.title} />
   ));
@@ -35,7 +40,22 @@ function Sidebar({ brands, products }: Props) {
     <div className='px-6 py-4 divide-y'>
       <div className='space-y-3 py-4'>
         <h3 className='text-title'>Brand</h3>
-        {brandList}
+        {categoryShowMore ? brandList.slice(0, 4) : brandList}
+        {categoryShowMore ? (
+          <p
+            className='flex items-center cursor-pointer text-accent'
+            onClick={() => setCategoryShowMore(false)}
+          >
+            Show more <BiChevronDown size={22} />
+          </p>
+        ) : (
+          <p
+            className='flex items-center cursor-pointer text-accent'
+            onClick={() => setCategoryShowMore(true)}
+          >
+            Show less <BiChevronUp size={22} />
+          </p>
+        )}
       </div>
       <div className='space-y-3 py-4'>
         <h3 className='text-title'>Gender</h3>
@@ -47,7 +67,22 @@ function Sidebar({ brands, products }: Props) {
       </div>
       <div className='space-y-3 py-4'>
         <h3 className='text-title'>Color</h3>
-        {colourList}
+        {colourShowMore ? colourList.slice(0, 4) : colourList}
+        {colourShowMore ? (
+          <p
+            className='flex items-center cursor-pointer text-accent'
+            onClick={() => setColourShowMore(false)}
+          >
+            Show more <BiChevronDown size={22} />
+          </p>
+        ) : (
+          <p
+            className='flex items-center cursor-pointer text-accent'
+            onClick={() => setColourShowMore(true)}
+          >
+            Show less <BiChevronUp size={22} />
+          </p>
+        )}
       </div>
     </div>
   );
