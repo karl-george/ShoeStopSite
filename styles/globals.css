@@ -19,6 +19,10 @@
     @apply text-[#767F92] text-xl font-medium;
   }
 
+  .text-accent {
+    @apply text-[#767F92];
+  }
+
   .text-hover {
     @apply hover:text-blue-accent;
   }
