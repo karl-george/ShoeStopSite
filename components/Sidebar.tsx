@@ -37,8 +37,8 @@ function Sidebar({ brands, products }: Props) {
     .map((colour, idx) => <Checkbox label={colour} key={colour + idx} />);
 
   return (
-    <div className='px-6 py-4 divide-y'>
-      <div className='space-y-3 py-4'>
+    <div className='px-4 divide-y w-[180px]'>
+      <div className='space-y-3 pb-4'>
         <h3 className='text-title'>Brand</h3>
         {categoryShowMore ? brandList.slice(0, 4) : brandList}
         {categoryShowMore ? (
