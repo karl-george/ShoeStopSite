@@ -9,8 +9,8 @@ interface Props {
 }
 
 function Sidebar({ brands, products }: Props) {
-  const [categoryShowMore, setCategoryShowMore] = useState(false);
-  const [colourShowMore, setColourShowMore] = useState(false);
+  const [categoryShowMore, setCategoryShowMore] = useState(true);
+  const [colourShowMore, setColourShowMore] = useState(true);
 
   const brandList = brands.map((brand) => (
     <Checkbox label={brand.title} key={brand._id + brand.title} />
@@ -37,8 +37,8 @@ function Sidebar({ brands, products }: Props) {
     .map((colour, idx) => <Checkbox label={colour} key={colour + idx} />);
 
   return (
-    <div className='px-4 divide-y w-[180px]'>
-      <div className='space-y-3 pb-4'>
+    <div className='px-4 divide-y w-[180px] hidden md:block'>
+      <div className='pb-4 space-y-3'>
         <h3 className='text-title'>Brand</h3>
         {categoryShowMore ? brandList.slice(0, 4) : brandList}
         {categoryShowMore ? (
@@ -57,15 +57,15 @@ function Sidebar({ brands, products }: Props) {
           </p>
         )}
       </div>
-      <div className='space-y-3 py-4'>
+      <div className='py-4 space-y-3'>
         <h3 className='text-title'>Gender</h3>
         {genderList}
       </div>
-      <div className='space-y-3 py-4'>
+      <div className='py-4 space-y-3'>
         <h3 className='text-title'>Price</h3>
         {priceList}
       </div>
-      <div className='space-y-3 py-4'>
+      <div className='py-4 space-y-3'>
         <h3 className='text-title'>Color</h3>
         {colourShowMore ? colourList.slice(0, 4) : colourList}
         {colourShowMore ? (

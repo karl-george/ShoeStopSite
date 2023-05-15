@@ -7,16 +7,16 @@ interface Prop {
 
 function ProductCard({ product }: Prop) {
   return (
-    <div className='flex flex-col border-2'>
-      <div className='relative h-[500px] w-[500px]'>
+    <div className='flex flex-col cursor-pointer'>
+      <div className='relative w-full aspect-video'>
         <Image
           src={urlFor(product.image[0]).url()}
           alt={product.title}
           fill
-          className='object-contain'
+          className='object-cover'
         />
       </div>
-      <div className='border-t-2'>
+      <div className=''>
         <h4>{product.title}</h4>
         <p>${product.price}</p>
         <p>trolleyicon</p>
