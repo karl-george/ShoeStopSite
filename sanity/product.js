@@ -1,11 +1,11 @@
 const gOptions = [
   {
-    title: 'Man',
-    value: 'Man',
+    title: "Men's",
+    value: "Men's",
   },
   {
-    title: 'Woman',
-    value: 'Woman',
+    title: "Women's",
+    value: "Women's",
   },
   {
     title: 'Kids',
