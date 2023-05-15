@@ -21,7 +21,7 @@ function Header() {
         <div
           className={
             isNavToggled
-              ? 'fixed flex flex-col top-14 right-1 w-[200px] py-8 px-6 space-y-6 font-medium text-lg transition border-l-2'
+              ? 'absolute flex flex-col top-14 right-1 w-[200px] py-8 px-6 space-y-6 font-medium text-lg transition border-l-2 z-50 bg-gray-100'
               : 'hidden space-x-8 md:flex'
           }
         >
