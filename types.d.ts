@@ -21,7 +21,7 @@ interface Product {
     _type: 'slug';
     current: string;
   };
-  vendor: {
+  brand: {
     _ref: string;
     _type: 'reference';
   };
