@@ -18,7 +18,7 @@ function ProductCard({ product }: Prop) {
         />
       </div>
       <div className=''>
-        <h4>{product.title}</h4>
+        <h4 className='text-lg'>{product.title}</h4>
         <p className='text-accent'>{product.gOptions} Shoes</p>
         <div className='flex items-center justify-between'>
           <p className='text-accent'>${product.price}</p>
