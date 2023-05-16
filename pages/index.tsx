@@ -29,10 +29,10 @@ export default function Home({ brands, products }: Props) {
       <Header />
       <div className='flex py-4'>
         <Sidebar brands={brands} products={products} />
+        <main className='w-full ml-4'>
+          <Products products={products} />
+        </main>
       </div>
-      <main className='w-full ml-4'>
-        <Products products={products} />
-      </main>
     </div>
   );
 }
