@@ -7,10 +7,13 @@ import Header from '@/components/Header';
 import Sidebar from '@/components/Sidebar';
 import { useDispatch } from 'react-redux';
 import { addProducts } from '@/redux/productSlice';
+import { getSession } from 'next-auth/react';
+import { Session } from 'next-auth';
 
 interface Props {
   brands: Brand[];
   products: Product[];
+  session: Session | null;
 }
 
 export default function Home({ brands, products }: Props) {
@@ -37,14 +40,18 @@ export default function Home({ brands, products }: Props) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps<Props> = async () => {
+export const getServerSideProps: GetServerSideProps<Props> = async (
+  context
+) => {
   const brands = await fetchBrands();
   const products = await fetchProducts();
+  const session = await getSession(context);
 
   return {
     props: {
       brands,
       products,
+      session,
     },
   };
 };

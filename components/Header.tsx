@@ -4,11 +4,14 @@ import Image from 'next/image';
 import { MdOutlineShoppingBag, MdOutlineSearch } from 'react-icons/md';
 import { AiOutlineUser, AiOutlineClose } from 'react-icons/ai';
 import { GiHamburgerMenu } from 'react-icons/gi';
+import { signIn, useSession } from 'next-auth/react';
 import logo from '../public/logo.png';
 import Button from './Button';
 
 function Header() {
   const [isNavToggled, setIsNavToggled] = useState(false);
+
+  const { data: session } = useSession();
 
   return (
     <header>
@@ -48,11 +51,27 @@ function Header() {
           <Link href='/checkout'>
             <MdOutlineShoppingBag size={25} className='text-hover text-title' />
           </Link>
-          <Link href='/user' className='hidden md:block'>
-            <AiOutlineUser size={25} className='text-hover text-title' />
-          </Link>
-          <a
-            href='#'
+          {session ? (
+            <Link href='/user' className='hidden md:block'>
+              <Image
+                src={session.user?.image || ''}
+                alt='User profile'
+                width={25}
+                height={25}
+                className='rounded-full cursor-pointer'
+              />
+            </Link>
+          ) : (
+            <div className='hidden cursor-pointer md:block'>
+              <AiOutlineUser
+                size={25}
+                className='text-hover text-title'
+                onClick={() => signIn()}
+              />
+            </div>
+          )}
+
+          <div
             className='md:hidden text-title'
             onClick={() => setIsNavToggled((prev) => !prev)}
           >
@@ -61,7 +80,7 @@ function Header() {
             ) : (
               <GiHamburgerMenu size={25} />
             )}
-          </a>
+          </div>
         </div>
       </nav>
     </header>
