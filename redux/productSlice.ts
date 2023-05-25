@@ -14,7 +14,9 @@ export const productSlice = createSlice({
   initialState,
   reducers: {
     addProducts: (state: ProductState, action: PayloadAction<Product[]>) => {
-      state.items = state.items.concat(action.payload);
+      if (state.items.length < 1) {
+        state.items = state.items.concat(action.payload);
+      }
     },
   },
 });
@@ -22,4 +24,4 @@ export const productSlice = createSlice({
 export const { addProducts } = productSlice.actions;
 export default productSlice.reducer;
 
-export const selectAllItems = (state: RootState) => state.products;
+export const selectAllItems = (state: RootState) => state.products.items;
