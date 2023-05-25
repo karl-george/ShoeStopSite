@@ -31,13 +31,13 @@ function Header() {
           <Link href='/' className='text-hover text-title'>
             Home
           </Link>
-          <Link href='/products/men' className='text-hover text-title'>
+          <Link href='/shoes/men' className='text-hover text-title'>
             Men
           </Link>
-          <Link href='/products/women' className='text-hover text-title'>
+          <Link href='/shoes/women' className='text-hover text-title'>
             Women
           </Link>
-          <Link href='/products/kids' className='text-hover text-title'>
+          <Link href='/shoes/kids' className='text-hover text-title'>
             Kids
           </Link>
           <div className='w-full pt-6 text-center md:hidden'>
