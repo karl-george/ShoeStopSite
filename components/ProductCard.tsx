@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { urlFor } from '@/sanity';
 import { MdOutlineShoppingBag } from 'react-icons/md';
+import Link from 'next/link';
 
 interface Prop {
   product: Product;
@@ -8,7 +9,13 @@ interface Prop {
 
 function ProductCard({ product }: Prop) {
   return (
-    <div className='flex flex-col space-y-3 cursor-pointer'>
+    <Link
+      href={{
+        pathname: `/product/[slug]`,
+        query: { slug: `${product.slug.current}` },
+      }}
+      className='flex flex-col space-y-3 cursor-pointer'
+    >
       <div className='relative w-full aspect-square'>
         <Image
           src={urlFor(product.image[0]).url()}
@@ -28,7 +35,7 @@ function ProductCard({ product }: Prop) {
           />
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 
