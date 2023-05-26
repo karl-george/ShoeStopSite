@@ -36,6 +36,10 @@ export default function Page({ products }: Props) {
       original: urlFor(product?.image[3]).url(),
       thumbnail: urlFor(product?.image[3]).url(),
     },
+    {
+      original: urlFor(product?.image[4]).url(),
+      thumbnail: urlFor(product?.image[4]).url(),
+    },
   ];
 
   return (
@@ -43,7 +47,7 @@ export default function Page({ products }: Props) {
       <Header />
       <div className='max-w-[1200px] mx-auto my-14'>
         <div className='flex gap-12'>
-          <div className='w-[600px]'>
+          <div className='w-[650px]'>
             <ImageGallery
               items={images}
               infinite={false}
@@ -60,7 +64,7 @@ export default function Page({ products }: Props) {
             <div>Colour Swatch</div>
             <div className='mb-10'>Sizes</div>
             <Button title={'Add to cart'} padding='py-2 px-6' filled />
-            <h2 className='max-w-[350px] min-w-[250px] font-semibold mt-10'>
+            <h2 className='max-w-[340px] min-w-[250px] font-semibold mt-10'>
               {product?.description}
             </h2>
           </div>
