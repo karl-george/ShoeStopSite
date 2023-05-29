@@ -10,7 +10,9 @@ import { fetchProducts } from '@/utils/fetchProducts';
 import { urlFor } from '@/sanity';
 import ProductCard from '@/components/ProductCard';
 import Footer from '@/components/Footer';
-import { privateDecrypt } from 'crypto';
+import { useDispatch } from 'react-redux';
+import { addToBasket } from '@/redux/basketSlice';
+import { ObjectMembers } from 'sanity';
 
 interface Props {
   products: Product[];
@@ -19,9 +21,11 @@ interface Props {
 
 export default function Page({ products }: Props) {
   const [selectedSize, setSelectedSize] = useState('');
-  const router = useRouter();
-  const { slug } = router.query;
 
+  const dispatch = useDispatch();
+  const router = useRouter();
+
+  const { slug } = router.query;
   const product = products.find((item) => item.slug.current === slug);
 
   const images = [
@@ -47,6 +51,11 @@ export default function Page({ products }: Props) {
     },
   ];
 
+  const addItemToBasket = (product: Product) => {
+    const shoeWithSize = { ...product, chosenSize: selectedSize };
+    dispatch(addToBasket(shoeWithSize));
+  };
+
   const shoeSize = product?.sizes?.map((size) => (
     <button
       className={`border-2 py-3 px-5 font-semibold hover:border-black max-w-[80px] ${
@@ -59,8 +68,8 @@ export default function Page({ products }: Props) {
     </button>
   ));
 
-  // Return a new Products array with the current product removed for Similar Products list
-  // Return the same gender shoes and slice for a smaller list
+  // Filter a new Products array with the current product removed for Similar Products list
+  // Filter for the same gender shoes and slice for a smaller list
   const notCurrentProduct = products
     .filter((item) => item._id !== product?._id)
     .filter((item) => item.gOptions === product?.gOptions)
@@ -96,6 +105,7 @@ export default function Page({ products }: Props) {
                 padding='py-6 px-12'
                 width='w-full'
                 filled
+                onClick={() => addItemToBasket(product)}
               />
             </div>
             <h2 className='font-semibold mt-10 max-w-[360px]'>
