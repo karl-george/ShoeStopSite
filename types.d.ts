@@ -41,4 +41,5 @@ interface Product {
   gOptions: string;
   colour: string;
   description: string;
+  chosenSize: string;
 }
