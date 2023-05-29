@@ -9,6 +9,8 @@ import Button from '@/components/Button';
 import { fetchProducts } from '@/utils/fetchProducts';
 import { urlFor } from '@/sanity';
 import ProductCard from '@/components/ProductCard';
+import Footer from '@/components/Footer';
+import { privateDecrypt } from 'crypto';
 
 interface Props {
   products: Product[];
@@ -51,6 +53,7 @@ export default function Page({ products }: Props) {
         size === selectedSize ? 'border-black' : ''
       }`}
       onClick={() => setSelectedSize(size)}
+      key={size}
     >
       EU {size}
     </button>
@@ -64,7 +67,7 @@ export default function Page({ products }: Props) {
     .slice(0, 5);
 
   const moreProducts = notCurrentProduct.map((product) => (
-    <ProductCard product={product} />
+    <ProductCard product={product} key={product._id} />
   ));
 
   return (
@@ -107,6 +110,7 @@ export default function Page({ products }: Props) {
           {moreProducts}
         </div>
       </section>
+      <Footer />
     </section>
   );
 }
