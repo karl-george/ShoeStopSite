@@ -29,10 +29,6 @@ function ProductCard({ product }: Prop) {
         <p className='text-accent'>{product.gOptions} Shoes</p>
         <div className='flex items-center justify-between'>
           <p className='text-accent'>${product.price}</p>
-          <MdOutlineShoppingBag
-            size={20}
-            className='mr-2 text-accent hover:text-blue-accent'
-          />
         </div>
       </div>
     </Link>
