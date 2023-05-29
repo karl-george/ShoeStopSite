@@ -8,6 +8,7 @@ import Header from '@/components/Header';
 import Button from '@/components/Button';
 import { fetchProducts } from '@/utils/fetchProducts';
 import { urlFor } from '@/sanity';
+import ProductCard from '@/components/ProductCard';
 
 interface Props {
   products: Product[];
@@ -55,8 +56,19 @@ export default function Page({ products }: Props) {
     </button>
   ));
 
+  // Return a new Products array with the current product removed for Similar Products list
+  // Return the same gender shoes and slice for a smaller list
+  const notCurrentProduct = products
+    .filter((item) => item._id !== product?._id)
+    .filter((item) => item.gOptions === product?.gOptions)
+    .slice(0, 5);
+
+  const moreProducts = notCurrentProduct.map((product) => (
+    <ProductCard product={product} />
+  ));
+
   return (
-    <div className='container'>
+    <section className='container'>
       <Header />
       <div className='max-w-[1200px] mx-auto my-14'>
         <div className='flex gap-12'>
@@ -89,7 +101,13 @@ export default function Page({ products }: Props) {
           </div>
         </div>
       </div>
-    </div>
+      <section className='mt-60'>
+        <h2 className='text-xl font-semibold mb-6'>You May Also Like</h2>
+        <div className='grid grid-cols-3 gap-2 md:grid-cols-3 lg:grid-cols-5 gap-y-12'>
+          {moreProducts}
+        </div>
+      </section>
+    </section>
   );
 }
 
