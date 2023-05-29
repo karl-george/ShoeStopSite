@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 import { Session } from 'next-auth';
@@ -14,6 +15,7 @@ interface Props {
 }
 
 export default function Page({ products }: Props) {
+  const [selectedSize, setSelectedSize] = useState('');
   const router = useRouter();
   const { slug } = router.query;
 
@@ -42,6 +44,17 @@ export default function Page({ products }: Props) {
     },
   ];
 
+  const shoeSize = product?.sizes?.map((size) => (
+    <button
+      className={`border-2 py-3 px-5 font-semibold hover:border-black ${
+        size === selectedSize ? 'border-black' : ''
+      }`}
+      onClick={() => setSelectedSize(size)}
+    >
+      EU {size}
+    </button>
+  ));
+
   return (
     <div className='container'>
       <Header />
@@ -57,14 +70,13 @@ export default function Page({ products }: Props) {
               showPlayButton={false}
             />
           </div>
-          <div className='flex-1 px-6'>
+          <div className='flex-1 px-6 max-w-[450px]'>
             <h1 className='text-[24px] font-bold'>{product?.title}</h1>
             <h2 className='text-lg font-semibold'>{product?.gOptions} Shoes</h2>
             <h2 className='my-2 text-lg font-semibold'>${product?.price}</h2>
-            <div>Colour Swatch</div>
-            <div className='mb-10'>Sizes</div>
+            <div className='mt-8 mb-10 flex flex-wrap gap-2'>{shoeSize}</div>
             <Button title={'Add to cart'} padding='py-2 px-6' filled />
-            <h2 className='max-w-[340px] min-w-[250px] font-semibold mt-10'>
+            <h2 className='font-semibold mt-10 max-w-[360px]'>
               {product?.description}
             </h2>
           </div>

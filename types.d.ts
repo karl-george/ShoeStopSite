@@ -35,6 +35,7 @@ interface Product {
       };
     }
   ];
+  sizes: string[];
   title: string;
   price: number;
   gOptions: string;
