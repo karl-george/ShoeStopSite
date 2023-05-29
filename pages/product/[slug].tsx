@@ -46,7 +46,7 @@ export default function Page({ products }: Props) {
 
   const shoeSize = product?.sizes?.map((size) => (
     <button
-      className={`border-2 py-3 px-5 font-semibold hover:border-black ${
+      className={`border-2 py-3 px-5 font-semibold hover:border-black max-w-[80px] ${
         size === selectedSize ? 'border-black' : ''
       }`}
       onClick={() => setSelectedSize(size)}
@@ -70,12 +70,19 @@ export default function Page({ products }: Props) {
               showPlayButton={false}
             />
           </div>
-          <div className='flex-1 px-6 max-w-[450px]'>
+          <div className='flex-1 px-6 max-w-[394px] min-w-[394px]'>
             <h1 className='text-[24px] font-bold'>{product?.title}</h1>
             <h2 className='text-lg font-semibold'>{product?.gOptions} Shoes</h2>
             <h2 className='my-2 text-lg font-semibold'>${product?.price}</h2>
             <div className='mt-8 mb-10 flex flex-wrap gap-2'>{shoeSize}</div>
-            <Button title={'Add to cart'} padding='py-2 px-6' filled />
+            <div className='text-center'>
+              <Button
+                title={'Add to cart'}
+                padding='py-6 px-12'
+                width='w-full'
+                filled
+              />
+            </div>
             <h2 className='font-semibold mt-10 max-w-[360px]'>
               {product?.description}
             </h2>
