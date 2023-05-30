@@ -12,7 +12,6 @@ import ProductCard from '@/components/ProductCard';
 import Footer from '@/components/Footer';
 import { useDispatch } from 'react-redux';
 import { addToBasket } from '@/redux/basketSlice';
-import { ObjectMembers } from 'sanity';
 
 interface Props {
   products: Product[];
@@ -98,7 +97,7 @@ export default function Page({ products }: Props) {
             <h1 className='text-[24px] font-bold'>{product?.title}</h1>
             <h2 className='text-lg font-semibold'>{product?.gOptions} Shoes</h2>
             <h2 className='my-2 text-lg font-semibold'>${product?.price}</h2>
-            <div className='mt-8 mb-10 flex flex-wrap gap-2'>{shoeSize}</div>
+            <div className='flex flex-wrap gap-2 mt-8 mb-10'>{shoeSize}</div>
             <div className='text-center'>
               <Button
                 title={'Add to cart'}
@@ -115,7 +114,7 @@ export default function Page({ products }: Props) {
         </div>
       </div>
       <section className='mt-60'>
-        <h2 className='text-xl font-semibold mb-6'>You May Also Like</h2>
+        <h2 className='mb-6 text-xl font-semibold'>You May Also Like</h2>
         <div className='grid grid-cols-3 gap-2 md:grid-cols-3 lg:grid-cols-5 gap-y-12'>
           {moreProducts}
         </div>
