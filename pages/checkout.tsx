@@ -32,7 +32,9 @@ function checkout() {
     <div className='container'>
       <Header />
       <div>
-        Checkout
+        <h1 className='text-[24px] font-semibold mt-12 text-accent'>
+          Review Your Shopping Cart
+        </h1>
         <div>
           {items.length > 0 && (
             <div>
