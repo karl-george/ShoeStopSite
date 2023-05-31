@@ -4,14 +4,15 @@ import { useRouter } from 'next/router';
 import { Session } from 'next-auth';
 import { getSession } from 'next-auth/react';
 import ImageGallery from 'react-image-gallery';
-import Header from '@/components/Header';
-import Button from '@/components/Button';
-import { fetchProducts } from '@/utils/fetchProducts';
 import { urlFor } from '@/sanity';
-import ProductCard from '@/components/ProductCard';
-import Footer from '@/components/Footer';
 import { useDispatch } from 'react-redux';
 import { addToBasket } from '@/redux/basketSlice';
+import { toast } from 'react-hot-toast';
+import Header from '@/components/Header';
+import Button from '@/components/Button';
+import ProductCard from '@/components/ProductCard';
+import Footer from '@/components/Footer';
+import { fetchProducts } from '@/utils/fetchProducts';
 
 interface Props {
   products: Product[];
@@ -53,6 +54,11 @@ export default function Page({ products }: Props) {
   const addItemToBasket = (product: Product) => {
     const shoeWithSize = { ...product, chosenSize: selectedSize };
     dispatch(addToBasket(shoeWithSize));
+
+    // Show the added to cart toast
+    toast.success(`${product.title} added to basket`, {
+      position: 'bottom-center',
+    });
   };
 
   const shoeSize = product?.sizes?.map((size) => (
