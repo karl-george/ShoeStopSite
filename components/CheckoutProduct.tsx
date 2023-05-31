@@ -37,7 +37,7 @@ function CheckoutProduct({ id, items }: Props) {
         <div className='flex-1 space-y-4'>
           <div className='flex flex-col justify-between gap-x-6 lg:flex-row lg:max-w-lg'>
             <h4
-              className='text-[22px] font-semibold text-accent cursor-pointer'
+              className='text-[22px] font-semibold text-accent cursor-pointer w-40'
               onClick={() => router.push(`product/${items[0].slug.current}`)}
             >
               {items[0].title}
