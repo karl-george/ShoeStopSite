@@ -52,7 +52,11 @@ export default function Page({ products }: Props) {
   ];
 
   const addItemToBasket = (product: Product) => {
-    const shoeWithSize = { ...product, chosenSize: selectedSize };
+    const shoeWithSize = {
+      ...product,
+      id: product._id + selectedSize,
+      chosenSize: selectedSize,
+    };
     dispatch(addToBasket(shoeWithSize));
 
     // Show the added to cart toast

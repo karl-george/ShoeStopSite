@@ -22,9 +22,8 @@ function CheckoutProduct({ id, items }: Props) {
     });
   };
 
-  console.log(items);
   return (
-    <div className='flex flex-col gap-8 py-4 my-4 border-b border-gray-300 lg:items-center gap-x-6 lg:flex-row'>
+    <div className='flex flex-col gap-8 py-4 my-4 border-b border-gray-300 lg:items-center gap-x-6 sm:flex-row'>
       <div className='relative w-32 h-32'>
         <Image
           src={urlFor(items[0].image[0]).url()}
@@ -68,3 +67,5 @@ function CheckoutProduct({ id, items }: Props) {
 }
 
 export default CheckoutProduct;
+
+// 046246e4-6e99-4dfd-80bc-68113a3a01b0

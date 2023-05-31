@@ -20,12 +20,12 @@ function checkout() {
   // When an item is added check if the item and size exists. If so increase quantity
   useEffect(() => {
     const groupedItems = items.reduce((res, item) => {
-      (res[item._id && item.chosenSize] =
-        res[item._id && item.chosenSize] || []).push(item);
+      (res[item.id] = res[item.id] || []).push(item);
 
       return res;
     }, {} as { [key: string]: Product[] });
 
+    console.log(groupedItems);
     setGroupedBasketItems(groupedItems);
   }, [items]);
 
