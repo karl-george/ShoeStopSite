@@ -20,7 +20,7 @@ interface Props {
 }
 
 export default function Page({ products }: Props) {
-  const [selectedSize, setSelectedSize] = useState('');
+  const [selectedSize, setSelectedSize] = useState('39');
 
   const dispatch = useDispatch();
   const router = useRouter();
