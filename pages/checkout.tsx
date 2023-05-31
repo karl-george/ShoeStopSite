@@ -17,10 +17,11 @@ function checkout() {
 
   const router = useRouter();
 
-  // When an item is added check if the item exists. If so increase quantity
+  // When an item is added check if the item and size exists. If so increase quantity
   useEffect(() => {
     const groupedItems = items.reduce((res, item) => {
-      (res[item._id] = res[item._id] || []).push(item);
+      (res[item._id && item.chosenSize] =
+        res[item._id && item.chosenSize] || []).push(item);
 
       return res;
     }, {} as { [key: string]: Product[] });
