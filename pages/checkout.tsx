@@ -31,19 +31,54 @@ function checkout() {
   return (
     <div className='container'>
       <Header />
-      <div>
-        <h1 className='text-[24px] font-semibold mt-12 text-accent'>
-          Review Your Shopping Cart
-        </h1>
-        <div>
-          {items.length > 0 && (
-            <div>
-              {Object.entries(groupedBasketItems).map(([key, items]) => (
-                <CheckoutProduct key={key} items={items} id={key} />
-              ))}
-            </div>
-          )}
+      <div className='max-w-5xl pb-24 mx-auto'>
+        <div className='px-5'>
+          <h1 className='mt-12 mb-4 text-3xl font-semibold text-center text-accent'>
+            {items.length > 0
+              ? 'Review Your Shopping Bag'
+              : 'Your Bag Is Empty'}
+          </h1>
+          <div className='mt-12 text-center'>
+            {items.length === 0 && (
+              <Button
+                title='Continue Shopping'
+                onClick={() => router.push('/')}
+                filled
+                padding='px-4 py-4'
+              />
+            )}
+          </div>
         </div>
+
+        {items.length > 0 && (
+          <div className='mx-5 md:mx-8'>
+            {Object.entries(groupedBasketItems).map(([key, items]) => (
+              <CheckoutProduct key={key} items={items} id={key} />
+            ))}
+            <div className='max-w-5xl my-12 mt-6 ml-auto'>
+              <div className='divide-y divide-gray-300'>
+                <div className='pb-4'>
+                  <div className='flex justify-between text-accent'>
+                    <p>Subtotal</p>
+                    <p>${basketTotal}</p>
+                  </div>
+                </div>
+                <div className='flex justify-between pt-4 text-xl font-semibold text-accent'>
+                  <h4>Total</h4>
+                  <h4>${basketTotal}</h4>
+                </div>
+              </div>
+              <div className='my-16 text-center'>
+                <Button
+                  loading={loading}
+                  title='Check Out'
+                  filled
+                  width='px-12 py-6'
+                />
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
