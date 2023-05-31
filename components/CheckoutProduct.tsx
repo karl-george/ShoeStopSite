@@ -1,5 +1,8 @@
 import Image from 'next/image';
 import { urlFor } from '@/sanity';
+import { removeFromBasket } from '@/redux/basketSlice';
+import { useDispatch } from 'react-redux';
+import { toast } from 'react-hot-toast';
 
 interface Props {
   items: Product[];
@@ -7,6 +10,16 @@ interface Props {
 }
 
 function CheckoutProduct({ id, items }: Props) {
+  const dispatch = useDispatch();
+
+  const removeItemFromBasket = () => {
+    dispatch(removeFromBasket({ id }));
+
+    toast.error(`${items[0].title} removed from basket`, {
+      position: 'bottom-center',
+    });
+  };
+
   return (
     <div className='flex flex-col gap-8 py-4 my-4 border-b border-gray-300 lg:items-center gap-x-6 lg:flex-row'>
       <div className='relative w-32 h-32'>
@@ -32,7 +45,10 @@ function CheckoutProduct({ id, items }: Props) {
           <h4 className='text-xl font-semibold lg:text-2xl text-accent'>
             ${items.reduce((total, item) => total + item.price, 0)}
           </h4>
-          <button className='font-semibold text-blue-500 hover:underline'>
+          <button
+            className='font-semibold text-blue-500 hover:underline'
+            onClick={removeItemFromBasket}
+          >
             Remove
           </button>
         </div>
