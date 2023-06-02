@@ -26,16 +26,7 @@ interface Product {
     _ref: string;
     _type: 'reference';
   };
-  image: [
-    {
-      _type: 'image';
-      _key: string;
-      asset: {
-        _ref: string;
-        _type: 'reference';
-      };
-    }
-  ];
+  image: Image[];
   sizes: string[];
   title: string;
   price: number;
@@ -43,4 +34,27 @@ interface Product {
   colour: string;
   description: string;
   chosenSize: string;
+}
+
+interface Image {
+  _key: string;
+  _type: 'image';
+  asset: {
+    url: string;
+  };
+}
+
+interface StripeProduct {
+  id: string;
+  amount_discount: number;
+  amount_subtotal: number;
+  amount_tax: number;
+  amount_total: number;
+  currency: string;
+  description: string;
+  object: string;
+  quantity: number;
+  price: {
+    unit_amount: number;
+  };
 }
