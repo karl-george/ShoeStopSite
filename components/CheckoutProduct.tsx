@@ -67,5 +67,3 @@ function CheckoutProduct({ id, items }: Props) {
 }
 
 export default CheckoutProduct;
-
-// 046246e4-6e99-4dfd-80bc-68113a3a01b0
