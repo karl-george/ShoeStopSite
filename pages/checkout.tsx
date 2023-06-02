@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
+import Stripe from 'stripe';
 import Header from '@/components/Header';
 import Button from '@/components/Button';
 import { selectBasketItems, selectBasketTotal } from '@/redux/basketSlice';
 import CheckoutProduct from '@/components/CheckoutProduct';
+import getStripe from '@/utils/get-stripejs';
+import { fetchPostJSON } from '@/utils/api-helpers';
 
 function checkout() {
   const [groupedBasketItems, setGroupedBasketItems] = useState(
@@ -25,9 +28,36 @@ function checkout() {
       return res;
     }, {} as { [key: string]: Product[] });
 
-    console.log(groupedItems);
     setGroupedBasketItems(groupedItems);
   }, [items]);
+
+  // Create Stripe Checkout Session
+  const createCheckoutSession = async () => {
+    setLoading(true);
+
+    const checkoutSession: Stripe.Checkout.Session = await fetchPostJSON(
+      '/api/checkout_sessions',
+      { items: items }
+    );
+
+    // Internal Server Error
+    if ((checkoutSession as any).statusCode === 500) {
+      console.error((checkoutSession as any).message);
+      return;
+    }
+
+    // Redirect to Checkout
+    const stripe = await getStripe();
+
+    const { error } = await stripe!.redirectToCheckout({
+      sessionId: checkoutSession.id,
+    });
+
+    // If redirectToCheckout fails show error
+    console.warn(error.message);
+
+    setLoading(false);
+  };
 
   return (
     <div className='container'>
@@ -75,6 +105,7 @@ function checkout() {
                   title='Check Out'
                   filled
                   width='px-12 py-6'
+                  onClick={createCheckoutSession}
                 />
               </div>
             </div>
