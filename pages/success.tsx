@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
 import { GetServerSideProps } from 'next';
 import { fetchStripeOrderItems } from '@/utils/fetchStripeOrderItems';
+import { urlFor } from '@/sanity';
 
 interface Props {
   products: StripeProduct[];
@@ -17,6 +18,11 @@ function success({ products }: Props) {
 
   // Next Auth hook to return session
   const { data: session } = useSession();
+
+  const total = products.reduce(
+    (acc, product) => acc + product.price.unit_amount / 100,
+    0
+  );
 
   return (
     <div className='container'>
@@ -31,10 +37,10 @@ function success({ products }: Props) {
           </div>
         </Link>
       </header>
-      <main className='max-w-[800px] mx-auto'>
-        <section className='flex flex-col p-6 mt-8 border border-gray-300 divide-y divide-gray-300'>
+      <main className='flex justify-center'>
+        <section className='flex flex-col px-6 py-12 mt-8 border border-gray-300 divide-y divide-gray-300 md:p-20'>
           <div>
-            <h1 className='text-2xl font-semibold text-center md:text-4xl text-accent'>
+            <h1 className='text-3xl font-semibold text-center md:text-4xl text-accent'>
               Your order has been confirmed!
             </h1>
             <h2 className='mt-10 text-xl font-semibold text-accent'>
@@ -52,32 +58,38 @@ function success({ products }: Props) {
               <p>SWE123456789</p>
             </div>
           </div>
-          <div className='py-4'>
-            <div>
-              <p className='mb-2 text-xl font-semibold text-accent'>
-                Order Updates:
-              </p>
-              <p>You'll get shipping and delivery updates by email and text.</p>
+          <div className='pt-4'>
+            <p className='text-xl font-semibold text-accent'>Products:</p>
+            <div className='divide-y divide-gray-300'>
+              {products.map((product) => (
+                <div
+                  className='flex-row justify-between py-4 md:flex'
+                  key={product.id}
+                >
+                  <p className='text-xl text-accent'>{product.description}</p>
+                  <p className='text-xl text-accent'>Qty: {product.quantity}</p>
+                  <p className='text-xl text-accent'>
+                    ${product.price.unit_amount / 100}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
-          <div className='divide-y divide-gray-300'>
-            {products.map((product) => (
-              <div className='' key={product.id}>
-                <div className=''>
-                  <div className='relative rounded-md h-7 w-7'>
-                    <Image
-                      src={logo}
-                      alt='product'
-                      fill
-                      className='object-contain'
-                    />
-                  </div>
-                  <div className=''>{product.quantity}</div>
-                </div>
-                <p className=''>{product.description}</p>
-                <p>${product.price.unit_amount / 100}</p>
-              </div>
-            ))}
+          <div className='py-4'>
+            <div className='flex justify-between'>
+              <p className='text-xl font-semibold text-accent'>Total:</p>
+              <p className='text-xl font-semibold text-accent'>${total}</p>
+            </div>
+          </div>
+          <div className='pt-4'>
+            <div>
+              <p className='mb-2'>
+                We'll send you shipping confirmation when your item(s) are on
+                the way!
+              </p>
+              <p className='mb-2'>Thank you!</p>
+              <p className='text-xl'>ShoeStop</p>
+            </div>
           </div>
         </section>
       </main>
