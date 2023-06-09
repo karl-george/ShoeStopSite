@@ -37,20 +37,20 @@ function Sidebar({ brands, products }: Props) {
     .map((colour, idx) => <Checkbox label={colour} key={colour + idx} />);
 
   return (
-    <div className='px-4 divide-y w-[180px] hidden md:block'>
+    <div className='divide-y w-[180px] hidden md:block'>
       <div className='pb-4 space-y-3'>
         <h3 className='text-title'>Brand</h3>
         {categoryShowMore ? brandList.slice(0, 4) : brandList}
         {categoryShowMore ? (
           <p
-            className='flex items-center cursor-pointer text-accent'
+            className='flex items-center cursor-pointer text-accent hover:text-blue-accent'
             onClick={() => setCategoryShowMore(false)}
           >
             Show more <BiChevronDown size={22} />
           </p>
         ) : (
           <p
-            className='flex items-center cursor-pointer text-accent'
+            className='flex items-center cursor-pointer text-accent hover:text-blue-accent'
             onClick={() => setCategoryShowMore(true)}
           >
             Show less <BiChevronUp size={22} />
@@ -70,14 +70,14 @@ function Sidebar({ brands, products }: Props) {
         {colourShowMore ? colourList.slice(0, 4) : colourList}
         {colourShowMore ? (
           <p
-            className='flex items-center cursor-pointer text-accent'
+            className='flex items-center cursor-pointer text-accent hover:text-blue-accent'
             onClick={() => setColourShowMore(false)}
           >
             Show more <BiChevronDown size={22} />
           </p>
         ) : (
           <p
-            className='flex items-center cursor-pointer text-accent'
+            className='flex items-center cursor-pointer text-accent hover:text-blue-accent'
             onClick={() => setColourShowMore(true)}
           >
             Show less <BiChevronUp size={22} />
