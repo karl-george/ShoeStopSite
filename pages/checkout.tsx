@@ -8,6 +8,7 @@ import { selectBasketItems, selectBasketTotal } from '@/redux/basketSlice';
 import CheckoutProduct from '@/components/CheckoutProduct';
 import getStripe from '@/utils/get-stripejs';
 import { fetchPostJSON } from '@/utils/api-helpers';
+import Footer from '@/components/Footer';
 
 function checkout() {
   const [groupedBasketItems, setGroupedBasketItems] = useState(
@@ -60,9 +61,9 @@ function checkout() {
   };
 
   return (
-    <div className='container'>
+    <div>
       <Header />
-      <div className='max-w-5xl pb-24 mx-auto'>
+      <div className='container max-w-5xl pb-24 mx-auto'>
         <div className='px-5'>
           <h1 className='mt-12 mb-4 text-3xl font-semibold text-center text-accent'>
             {items.length > 0
@@ -112,6 +113,7 @@ function checkout() {
           </div>
         )}
       </div>
+      <Footer />
     </div>
   );
 }

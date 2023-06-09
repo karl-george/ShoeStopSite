@@ -6,6 +6,7 @@ import Header from '@/components/Header';
 import Sidebar from '@/components/Sidebar';
 import { getSession } from 'next-auth/react';
 import { Session } from 'next-auth';
+import Footer from '@/components/Footer';
 
 interface Props {
   brands: Brand[];
@@ -23,6 +24,7 @@ export default function Home({ brands, products }: Props) {
           <Products products={products} />
         </main>
       </div>
+      <Footer />
     </div>
   );
 }

@@ -7,6 +7,7 @@ import { fetchBrands } from '@/utils/fetchBrands';
 import { fetchProducts } from '@/utils/fetchProducts';
 import { getSession } from 'next-auth/react';
 import { Session } from 'next-auth';
+import Footer from '@/components/Footer';
 
 interface Props {
   brands: Brand[];
@@ -35,14 +36,15 @@ export default function Page({ brands, products }: Props) {
   }
 
   return (
-    <div className='container'>
+    <div>
       <Header />
-      <div className='flex py-4'>
+      <div className='container flex py-4 '>
         <Sidebar brands={brands} products={products} />
         <main className='w-full ml-4'>
           <Products products={filteredGender} />
         </main>
       </div>
+      <Footer />
     </div>
   );
 }

@@ -89,9 +89,9 @@ export default function Page({ products }: Props) {
   ));
 
   return (
-    <section className='container'>
+    <section>
       <Header />
-      <div className='max-w-[1200px] mx-auto my-14'>
+      <div className='container max-w-[1200px] mx-auto my-14'>
         <div className='flex gap-12'>
           <div className='w-[650px]'>
             <ImageGallery
@@ -123,7 +123,7 @@ export default function Page({ products }: Props) {
           </div>
         </div>
       </div>
-      <section className='mt-60'>
+      <section className='container mt-60'>
         <h2 className='mb-6 text-xl font-semibold'>You May Also Like</h2>
         <div className='grid grid-cols-3 gap-2 md:grid-cols-3 lg:grid-cols-5 gap-y-12'>
           {moreProducts}
