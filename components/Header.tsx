@@ -18,7 +18,7 @@ function Header() {
   const basketItems = useSelector(selectBasketItems);
 
   return (
-    <header>
+    <header className='container'>
       <nav className='flex flex-row items-center justify-between py-6'>
         <Link href='/'>
           <div className='relative w-40'>
@@ -54,9 +54,11 @@ function Header() {
           </Link>
           <Link href='/checkout'>
             <div className='relative'>
-              <span className='absolute z-50 flex items-center justify-center w-5 h-5 text-[10px] text-white border border-gray-300 rounded-full -right-1 -top-1 bg-blue-accent'>
-                {basketItems.length > 0 && basketItems.length}
-              </span>
+              {basketItems.length > 0 && (
+                <span className='absolute z-50 flex items-center justify-center w-5 h-5 text-[10px] text-white border border-gray-300 rounded-full -right-1 -top-1 bg-blue-accent'>
+                  {basketItems.length > 0 && basketItems.length}
+                </span>
+              )}
               <MdOutlineShoppingBag
                 size={25}
                 className='text-hover text-title'
