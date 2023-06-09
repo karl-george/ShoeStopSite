@@ -6,7 +6,6 @@ import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
 import { GetServerSideProps } from 'next';
 import { fetchStripeOrderItems } from '@/utils/fetchStripeOrderItems';
-import { urlFor } from '@/sanity';
 
 interface Props {
   products: StripeProduct[];
