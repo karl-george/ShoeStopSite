@@ -28,7 +28,7 @@ function Header() {
         <div
           className={
             isNavToggled
-              ? 'absolute flex flex-col top-14 right-1 w-[200px] py-8 px-6 space-y-6 font-medium text-lg transition border-l-2 z-50 bg-gray-100'
+              ? 'absolute flex flex-col top-14 right-1 w-[200px] py-8 px-6 space-y-6 font-medium text-lg transition z-50 bg-gray-100'
               : 'hidden space-x-8 md:flex'
           }
         >
@@ -44,9 +44,11 @@ function Header() {
           <Link href='/shoes/kids' className='text-hover text-title'>
             Kids
           </Link>
-          <div className='w-full pt-6 text-center md:hidden'>
-            <Button title='Sign In' padding='py-2 px-6' filled />
-          </div>
+          {!session && (
+            <div className='w-full pt-6 text-center md:hidden'>
+              <Button title='Sign In' padding='py-2 px-6' filled />
+            </div>
+          )}
         </div>
         <div className='flex space-x-6'>
           <Link href='/search'>
