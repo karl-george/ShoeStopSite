@@ -18,7 +18,7 @@ function Checkbox({ label }: IProps) {
           type='checkbox'
           checked={checked}
           onChange={handleChange}
-          className='w-5 h-5 rounded-full checked:bg-blue-accent focus:ring-0 mr-2'
+          className='w-5 h-5 rounded-md checked:bg-blue-accent focus:ring-0 mr-2'
         />
         {label}
       </label>
