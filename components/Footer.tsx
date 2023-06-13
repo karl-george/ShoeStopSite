@@ -2,7 +2,7 @@ function Footer() {
   return (
     <div className='mt-20 bg-gray-100 border-t-2'>
       <div className='container'>
-        <div className='flex items-center justify-between my-8 md:max-w-[600px] md:mx-auto'>
+        <div className='flex items-center justify-between my-8 max-w-[600px] mx-auto'>
           <div className='space-y-5'>
             <h2 className='mb-3 font-semibold md:text-xl'>GET HELP</h2>
             <p className='cursor-pointer hover:text-blue-accent'>
