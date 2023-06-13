@@ -47,9 +47,58 @@ function Sidebar({ brands, products }: Props) {
           onClick={() => setIsFilterToggled((prev) => !prev)}
         />
       </div>
-      {isFilterToggled && (
+      {isFilterToggled ? (
         <div className='divide-y md:w-[180px] md:block px-4'>
-          <div className='flex flex-col pb-4 space-y-3 '>
+          <div className='flex flex-col pb-4 space-y-3'>
+            <h3 className='text-title'>Brand</h3>
+            {categoryShowMore ? brandList.slice(0, 4) : brandList}
+            {categoryShowMore ? (
+              <p
+                className='flex items-center cursor-pointer text-accent hover:text-blue-accent'
+                onClick={() => setCategoryShowMore(false)}
+              >
+                Show more <BiChevronDown size={22} />
+              </p>
+            ) : (
+              <p
+                className='flex items-center cursor-pointer text-accent hover:text-blue-accent'
+                onClick={() => setCategoryShowMore(true)}
+              >
+                Show less <BiChevronUp size={22} />
+              </p>
+            )}
+          </div>
+          <div className='py-4 space-y-3'>
+            <h3 className='text-title'>Gender</h3>
+            {genderList}
+          </div>
+          <div className='py-4 space-y-3'>
+            <h3 className='text-title'>Price</h3>
+            {priceList}
+          </div>
+          <div className='py-4 space-y-3'>
+            <h3 className='text-title'>Color</h3>
+            {colourShowMore ? colourList.slice(0, 4) : colourList}
+            {colourShowMore ? (
+              <p
+                className='flex items-center cursor-pointer text-accent hover:text-blue-accent'
+                onClick={() => setColourShowMore(false)}
+              >
+                Show more <BiChevronDown size={22} />
+              </p>
+            ) : (
+              <p
+                className='flex items-center cursor-pointer text-accent hover:text-blue-accent'
+                onClick={() => setColourShowMore(true)}
+              >
+                Show less <BiChevronUp size={22} />
+              </p>
+            )}
+          </div>
+        </div>
+      ) : (
+        <div className='hidden divide-y md:w-[180px] md:block px-4'>
+          <div className='flex flex-col pb-4 space-y-3'>
             <h3 className='text-title'>Brand</h3>
             {categoryShowMore ? brandList.slice(0, 4) : brandList}
             {categoryShowMore ? (
@@ -102,54 +151,3 @@ function Sidebar({ brands, products }: Props) {
 }
 
 export default Sidebar;
-
-// {isFilterToggled && (
-//   <div className='divide-y w-[180px] md:block'>
-//     <div className='pb-4 space-y-3'>
-//       <h3 className='text-title'>Brand</h3>
-//       {categoryShowMore ? brandList.slice(0, 4) : brandList}
-//       {categoryShowMore ? (
-//         <p
-//           className='flex items-center cursor-pointer text-accent hover:text-blue-accent'
-//           onClick={() => setCategoryShowMore(false)}
-//         >
-//           Show more <BiChevronDown size={22} />
-//         </p>
-//       ) : (
-//         <p
-//           className='flex items-center cursor-pointer text-accent hover:text-blue-accent'
-//           onClick={() => setCategoryShowMore(true)}
-//         >
-//           Show less <BiChevronUp size={22} />
-//         </p>
-//       )}
-//     </div>
-//     <div className='py-4 space-y-3'>
-//       <h3 className='text-title'>Gender</h3>
-//       {genderList}
-//     </div>
-//     <div className='py-4 space-y-3'>
-//       <h3 className='text-title'>Price</h3>
-//       {priceList}
-//     </div>
-//     <div className='py-4 space-y-3'>
-//       <h3 className='text-title'>Color</h3>
-//       {colourShowMore ? colourList.slice(0, 4) : colourList}
-//       {colourShowMore ? (
-//         <p
-//           className='flex items-center cursor-pointer text-accent hover:text-blue-accent'
-//           onClick={() => setColourShowMore(false)}
-//         >
-//           Show more <BiChevronDown size={22} />
-//         </p>
-//       ) : (
-//         <p
-//           className='flex items-center cursor-pointer text-accent hover:text-blue-accent'
-//           onClick={() => setColourShowMore(true)}
-//         >
-//           Show less <BiChevronUp size={22} />
-//         </p>
-//       )}
-//     </div>
-//   </div>
-// )}
