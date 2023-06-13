@@ -113,7 +113,9 @@ function checkout() {
           </div>
         )}
       </div>
-      <Footer />
+      <div className='absolute w-full bottom-0'>
+        <Footer />
+      </div>
     </div>
   );
 }
