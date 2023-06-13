@@ -18,7 +18,7 @@ export default function Home({ brands, products }: Props) {
   return (
     <div>
       <Header />
-      <div className='container flex py-4'>
+      <div className='container md:flex md:py-4'>
         <Sidebar brands={brands} products={products} />
         <main className='w-full md:ml-4'>
           <Products products={products} />
