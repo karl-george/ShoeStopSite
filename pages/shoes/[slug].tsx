@@ -17,6 +17,7 @@ interface Props {
 
 export default function Page({ brands, products }: Props) {
   const router = useRouter();
+  const query = router.query;
   let filteredGender: Product[] = [];
 
   if (router.query.slug == 'men') {
@@ -31,7 +32,7 @@ export default function Page({ brands, products }: Props) {
     filteredGender = womenShoes.concat(unisex);
   }
 
-  if (router.query.slug == 'unisex') {
+  if (router.query.slug == 'kids') {
     filteredGender = products.filter((item) => item.gOptions === 'Kids');
   }
 
