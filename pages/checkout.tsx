@@ -113,7 +113,7 @@ function checkout() {
           </div>
         )}
       </div>
-      <div className='absolute w-full bottom-0'>
+      <div className={`${items.length <= 1 && 'absolute w-full bottom-0'}`}>
         <Footer />
       </div>
     </div>
