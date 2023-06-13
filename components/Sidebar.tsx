@@ -48,7 +48,7 @@ function Sidebar({ brands, products }: Props) {
         />
       </div>
       {isFilterToggled && (
-        <div className='divide-y md:w-[180px] md:block px-6'>
+        <div className='divide-y md:w-[180px] md:block px-4'>
           <div className='flex flex-col pb-4 space-y-3 '>
             <h3 className='text-title'>Brand</h3>
             {categoryShowMore ? brandList.slice(0, 4) : brandList}
