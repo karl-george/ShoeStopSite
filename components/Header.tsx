@@ -44,6 +44,9 @@ function Header() {
           <Link href='/shoes/kids' className='text-hover text-title'>
             Kids
           </Link>
+          <Link href='/user' className='text-hover text-title md:hidden'>
+            User Profile
+          </Link>
           {!session && (
             <div className='w-full pt-6 text-center md:hidden'>
               <Button title='Sign In' padding='py-2 px-6' filled />
@@ -51,9 +54,6 @@ function Header() {
           )}
         </div>
         <div className='flex space-x-6'>
-          <Link href='/search'>
-            <MdOutlineSearch size={25} className='text-hover text-title' />
-          </Link>
           <Link href='/checkout'>
             <div className='relative'>
               {basketItems.length > 0 && (

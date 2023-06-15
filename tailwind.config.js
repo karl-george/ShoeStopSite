@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        md: '960px',
+      },
       colors: {
         'blue-accent': '#4B91F1',
       },

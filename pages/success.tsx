@@ -24,7 +24,7 @@ function success({ products }: Props) {
   );
 
   return (
-    <div className='container'>
+    <div className='container mb-5'>
       <Head>
         <title>Thanks! - ShoeStop</title>
         <link rel='shortcut icon' href='favicon.ico' type='image/x-icon' />

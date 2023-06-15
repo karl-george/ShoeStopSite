@@ -92,8 +92,8 @@ export default function Page({ products }: Props) {
     <section>
       <Header />
       <div className='container max-w-[1200px] mx-auto my-14'>
-        <div className='flex gap-12'>
-          <div className='w-[650px]'>
+        <div className='flex flex-col gap-12 md:flex-row'>
+          <div className='max-w-[650px] mx-auto'>
             <ImageGallery
               items={images}
               infinite={false}
@@ -101,9 +101,10 @@ export default function Page({ products }: Props) {
               thumbnailPosition='left'
               showFullscreenButton={false}
               showPlayButton={false}
+              slideOnThumbnailOver={true}
             />
           </div>
-          <div className='flex-1 px-6 max-w-[394px] min-w-[394px]'>
+          <div className='flex-1 px-3 md:px-6 md:max-w-[394px] md:min-w-[394px]'>
             <h1 className='text-[24px] font-bold'>{product?.title}</h1>
             <h2 className='text-lg font-semibold'>{product?.gOptions} Shoes</h2>
             <h2 className='my-2 text-lg font-semibold'>${product?.price}</h2>
@@ -117,13 +118,13 @@ export default function Page({ products }: Props) {
                 onClick={() => addItemToBasket(product)}
               />
             </div>
-            <h2 className='font-semibold mt-10 max-w-[360px]'>
+            <h2 className='font-semibold mt-10 md:max-w-[360px]'>
               {product?.description}
             </h2>
           </div>
         </div>
       </div>
-      <section className='container mt-60'>
+      <section className='container mt-40 md:mt-60'>
         <h2 className='mb-6 text-xl font-semibold'>You May Also Like</h2>
         <div className='grid grid-cols-3 gap-2 md:grid-cols-3 lg:grid-cols-5 gap-y-12'>
           {moreProducts}
