@@ -15,15 +15,15 @@ function Sidebar({ brands, products }: Props) {
   const [isFilterToggled, setIsFilterToggled] = useState(false);
 
   const brandList = brands.map((brand) => (
-    <Checkbox label={brand.title} key={brand._id + brand.title} />
+    <Checkbox query='brand' label={brand.title} key={brand._id + brand.title} />
   ));
 
   const genderList = genders.map((gender, idx) => (
-    <Checkbox label={gender.title} key={gender.title + idx} />
+    <Checkbox query='gender' label={gender.title} key={gender.title + idx} />
   ));
 
   const priceList = prices.map((price, idx) => (
-    <Checkbox label={price.price} key={price.price + idx} />
+    <Checkbox query='price' label={price.price} key={price.price + idx} />
   ));
 
   /** Retrieve colours, remove duplicates, sort and map through them and pass to Checkbox component **/
@@ -36,7 +36,9 @@ function Sidebar({ brands, products }: Props) {
       return colours.indexOf(item) === index;
     })
     .sort()
-    .map((colour, idx) => <Checkbox label={colour} key={colour + idx} />);
+    .map((colour, idx) => (
+      <Checkbox query='color' label={colour} key={colour + idx} />
+    ));
 
   return (
     <div className='flex flex-col mb-8'>

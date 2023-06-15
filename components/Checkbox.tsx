@@ -1,14 +1,21 @@
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 
 interface IProps {
   label: string;
+  query: string;
 }
 
-function Checkbox({ label }: IProps) {
+function Checkbox({ label, query }: IProps) {
   const [checked, setChecked] = useState(false);
+
+  const router = useRouter();
+
+  console.log(router.asPath);
 
   const handleChange = () => {
     setChecked((prev) => !prev);
+    router.push(`${query}=${label}`);
   };
 
   return (
