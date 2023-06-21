@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
-import { Session } from 'next-auth';
-import { getSession } from 'next-auth/react';
 import ImageGallery from 'react-image-gallery';
 import { urlFor } from '@/sanity';
 import { useDispatch } from 'react-redux';
@@ -16,7 +14,6 @@ import { fetchProducts } from '@/utils/fetchProducts';
 
 interface Props {
   products: Product[];
-  session: Session | null;
 }
 
 export default function Page({ products }: Props) {
@@ -115,7 +112,7 @@ export default function Page({ products }: Props) {
                 padding='py-6 px-12'
                 width='w-full'
                 filled
-                onClick={() => addItemToBasket(product)}
+                onClick={() => addItemToBasket(product as Product)}
               />
             </div>
             <h2 className='font-semibold mt-10 md:max-w-[360px]'>
@@ -139,12 +136,10 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
   context
 ) => {
   const products = await fetchProducts();
-  const session = await getSession(context);
 
   return {
     props: {
       products,
-      session,
     },
   };
 };

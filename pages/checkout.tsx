@@ -10,7 +10,7 @@ import getStripe from '@/utils/get-stripejs';
 import { fetchPostJSON } from '@/utils/api-helpers';
 import Footer from '@/components/Footer';
 
-function checkout() {
+function Checkout() {
   const [groupedBasketItems, setGroupedBasketItems] = useState(
     {} as { [key: string]: Product[] }
   );
@@ -120,4 +120,4 @@ function checkout() {
   );
 }
 
-export default checkout;
+export default Checkout;

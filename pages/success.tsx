@@ -11,7 +11,7 @@ interface Props {
   products: StripeProduct[];
 }
 
-function success({ products }: Props) {
+function Success({ products }: Props) {
   const router = useRouter();
   const { session_id } = router.query;
 
@@ -83,8 +83,8 @@ function success({ products }: Props) {
           <div className='pt-4'>
             <div>
               <p className='mb-2'>
-                We'll send you shipping confirmation when your item(s) are on
-                the way!
+                We&apos;ll send you shipping confirmation when your item(s) are
+                on the way!
               </p>
               <p className='mb-2'>Thank you!</p>
               <p className='text-xl'>ShoeStop</p>
@@ -96,7 +96,7 @@ function success({ products }: Props) {
   );
 }
 
-export default success;
+export default Success;
 
 export const getServerSideProps: GetServerSideProps<Props> = async ({
   query,
