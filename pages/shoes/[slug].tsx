@@ -40,7 +40,7 @@ export default function Page({ brands, products }: Props) {
     <div>
       <Header />
       <div className='container md:flex md:py-4 '>
-        <Sidebar brands={brands} products={products} />
+        {/* <Sidebar brands={brands} products={products} /> */}
         <main className='w-full md:ml-4'>
           <Products products={filteredGender} />
         </main>
